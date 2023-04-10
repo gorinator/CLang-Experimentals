@@ -11,11 +11,7 @@
 #include <iostream>
 #define tempArr 100  // maximum length of temp arrays
 
-void fncoolprint(char* sArr_in, char* smblArr_in, int flenth_in, int fheight_in) {
-    char* sArr = new char[tempArr];
-    sArr = sArr_in;
-    char* smblArr = new char[tempArr];
-    smblArr = smblArr_in;
+void fncoolprint(char* sArr, char* smblArr, int flenth_in, int fheight_in) {
     int flenth = flenth_in;
     int fheight = fheight_in;
     flenth -= 1; // offset by - 1, as we work with array addresses, otherwise the string is 1 char longer
@@ -100,6 +96,4 @@ void fncoolprint(char* sArr_in, char* smblArr_in, int flenth_in, int fheight_in)
         }
         std::cout << std::endl;
     }
-    //delete[] sArr; //Не могу выгрузить память из функции, так и должно быть?
-    //delete[] smblArr; // Может потому что это функция?
 }
