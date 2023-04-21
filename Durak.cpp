@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
+#include <stdlib.h>
 
 struct card {
     int mast;
@@ -33,6 +34,11 @@ int main() {
     set[4] = { chervi,8 };
     set[5] = { bubi,dama };
     setprint(&set[0], 6);
+    int choise;
+    printf("Choose a card number: ");
+    std::cin >> choise;
+    system("CLS");
+    setprint(&set[choise-1], 1);
     return 0;
 }
 
@@ -79,5 +85,5 @@ void setprint(card* set, int n) {
      for (int i = 0; i < n; i++) {
          printf("  %i  \t", i+1);
      }
-     printf("\n");
+     printf("\n\n");
 }
