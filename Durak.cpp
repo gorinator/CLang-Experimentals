@@ -22,23 +22,62 @@ enum karty {  // V - 11, D - 12, K - 13, T - 14
 };
 
 
-void cardprint(card somecard);
+void cardprint(card* set, int n);
 
 int main() {
-    card c6{chervi,6};
-    cardprint(c6);
+    card set[6];
+    set[0] = { chervi,6 };
+    set[1] = { bubi, valet};
+    set[2] = { piki,10 };
+    set[3] = { kresti,tuz };
+    set[4] = { chervi,8 };
+    set[5] = { bubi,dama };
+    cardprint(&set[0], 6);
     return 0;
 }
 
-void cardprint(card somecard) {
-     printf("/////\n");
-     printf("/ %c /\n", (char)somecard.mast);
-     if (somecard.value > 9) {
-         printf("/ %i/\n", somecard.value);
+void cardprint(card* set, int n) {
+     for (int i = 0; i < n; i++) {
+         printf("/////\t");
      }
-     else {
-         printf("/ %i /\n", somecard.value);
+     printf("\n");
+     for (int i = 0; i < n; i++) {
+         printf("/ %c /\t", (char)set[i].mast);
      }
-     printf("/ %c /\n", (char)somecard.mast);
-     printf("/////\n");
+     printf("\n");
+     for (int i = 0; i < n; i++) {
+         switch (set[i].value) {
+         case 10:
+             printf("/ %i/\t", set[i].value);
+             break;
+         case 11:
+             printf("/ %c /\t", 'V');
+             break;
+         case 12:
+             printf("/ %c /\t", 'D');
+             break;
+         case 13:
+             printf("/ %c /\t", 'K');
+             break;
+         case 14:
+             printf("/ %c /\t", 'T');
+             break;
+         default:
+             printf("/ %i /\t", set[i].value);
+             break;
+         }
+     }
+     printf("\n");
+     for (int i = 0; i < n; i++) {
+         printf("/ %c /\t", (char)set[i].mast);
+     }
+     printf("\n");
+     for (int i = 0; i < n; i++) {
+         printf("/////\t");
+     }
+     printf("\n");
+     for (int i = 0; i < n; i++) {
+         printf("  %i  \t", i+1);
+     }
+     printf("\n");
 }
