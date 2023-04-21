@@ -22,7 +22,7 @@ enum karty {  // V - 11, D - 12, K - 13, T - 14
 };
 
 
-void cardprint(card* set, int n);
+void setprint(card* set, int n);
 
 int main() {
     card set[6];
@@ -32,11 +32,11 @@ int main() {
     set[3] = { kresti,tuz };
     set[4] = { chervi,8 };
     set[5] = { bubi,dama };
-    cardprint(&set[0], 6);
+    setprint(&set[0], 6);
     return 0;
 }
 
-void cardprint(card* set, int n) {
+void setprint(card* set, int n) {
      for (int i = 0; i < n; i++) {
          printf("/////\t");
      }
