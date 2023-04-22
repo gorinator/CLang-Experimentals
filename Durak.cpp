@@ -38,11 +38,10 @@ int main() {
     set[5] = { bubi,dama };
     setprint(&set[0], 6, true);
     bool c = askyn();
-    int y = (int)c;
-    y++;
     int choise = askint();
     system("CLS");
     setprint(&set[choise-1], 1, false);
+    std::cout << choise;
     return 0;
 }
 
@@ -94,13 +93,39 @@ void setprint(card* set, int n, bool numeration) {
      printf("\n\n");
 }
 
-int askint(){
+int askint(){ // тут не доделал косяк с числами более 3 и 4 знаков
     int intanswer = -1;
     do {
         printf("Enter number: ");
-        intanswer = (int)getchar();
-        intanswer -= 48;
-    } while (intanswer < 1 || intanswer > 6);
+        char intin[20];
+        std::cin >> intin;
+        intanswer = 0;
+        int n = strlen(intin);
+        int countx = 1;
+        if (n > 1) {
+            for (int k = 1; k < n; k++) {
+                countx *= 10;
+            }
+        }
+        if (countx > 1) {
+            for (int x = countx, i = 0; i < n; i++, x /= 10) {
+                if (intin[i] == '0' || intin[i] == '1' || intin[i] == '2' || intin[i] == '3' || intin[i] == '4' || intin[i] == '5' || intin[i] == '6' || intin[i] == '7' || intin[i] == '8' || intin[i] == '9') {
+                    int temp = (int)intin[i];
+                    temp -= 48;
+                    intanswer += temp * x;
+                }
+            }
+        }
+        if (n == 1) {
+            for (int i = 0; i < n; i++) {
+                if (intin[i] == '0' || intin[i] == '1' || intin[i] == '2' || intin[i] == '3' || intin[i] == '4' || intin[i] == '5' || intin[i] == '6' || intin[i] == '7' || intin[i] == '8' || intin[i] == '9') {
+                    int temp = (int)intin[i];
+                    temp -= 48;
+                    intanswer += temp;
+                }
+            }
+        }
+    } while (intanswer < 1 || intanswer > 360000);
     return intanswer;
 }
 
@@ -108,7 +133,9 @@ bool askyn() {
     char charanswerb = 'x';
     do {
         printf("Enter y or n: ");
-        charanswerb = getchar();
+        std::string in;
+        std::cin >> in;
+        charanswerb = in[0];
     } while (charanswerb != 'y' && charanswerb != 'Y' && charanswerb != 'n' && charanswerb != 'N');
     if (charanswerb == 'y' || charanswerb == 'Y') {
         return true;
