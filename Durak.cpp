@@ -6,6 +6,7 @@
 struct card {
     int mast;
     int value;
+    bool kozyr;
 };
 
 enum masti {  // ♥ - 3, ♦ - 4, ♣ - 5, ♠ - 6
@@ -22,8 +23,10 @@ enum karty {  // V - 11, D - 12, K - 13, T - 14
     tuz = 14
 };
 
+void setprint(card* set, int n, bool numeration);
+bool askyn();
+int askint();
 
-void setprint(card* set, int n);
 
 int main() {
     card set[6];
@@ -33,16 +36,17 @@ int main() {
     set[3] = { kresti,tuz };
     set[4] = { chervi,8 };
     set[5] = { bubi,dama };
-    setprint(&set[0], 6);
-    int choise;
-    printf("Choose a card number: ");
-    std::cin >> choise;
+    setprint(&set[0], 6, true);
+    bool c = askyn();
+    int y = (int)c;
+    y++;
+    int choise = askint();
     system("CLS");
-    setprint(&set[choise-1], 1);
+    setprint(&set[choise-1], 1, false);
     return 0;
 }
 
-void setprint(card* set, int n) {
+void setprint(card* set, int n, bool numeration) {
      for (int i = 0; i < n; i++) {
          printf("/////\t");
      }
@@ -82,8 +86,34 @@ void setprint(card* set, int n) {
          printf("/////\t");
      }
      printf("\n");
-     for (int i = 0; i < n; i++) {
-         printf("  %i  \t", i+1);
+     if (numeration) {
+         for (int i = 0; i < n; i++) {
+             printf("  %i  \t", i + 1);
+         }
      }
      printf("\n\n");
+}
+
+int askint(){
+    int intanswer = -1;
+    do {
+        printf("Enter number: ");
+        intanswer = (int)getchar();
+        intanswer -= 48;
+    } while (intanswer < 1 || intanswer > 6);
+    return intanswer;
+}
+
+bool askyn() {
+    char charanswerb = 'x';
+    do {
+        printf("Enter y or n: ");
+        charanswerb = getchar();
+    } while (charanswerb != 'y' && charanswerb != 'Y' && charanswerb != 'n' && charanswerb != 'N');
+    if (charanswerb == 'y' || charanswerb == 'Y') {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
