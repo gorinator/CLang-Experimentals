@@ -1,5 +1,5 @@
 /*
-Protected int function that returnes only int values in a custom range. 
+Protected int function that returnes only positiv int values in a custom range. 
 Allowable int range sets as arguments to function.
 Function reply input again before digit will not be on first place in input 
 and calulate lenth of digital part, and skipp all other chars after digital part.
@@ -9,7 +9,7 @@ and calulate lenth of digital part, and skipp all other chars after digital part
 
 int askint(int intmin, int intmax); // needed if function code not in top of the other code
 
-int askint(int intmin, int intmax) { // protected input of only int values in a range, int range sets as arguments in function
+int askint(int intmin, int intmax) { // protected input of only positiv int values in a range, int range sets as arguments in function
     int intanswer = -2147483648; // min_int value for initialisation
     do {
         printf("Enter number from %i to %i:", intmin, intmax);
