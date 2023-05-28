@@ -152,6 +152,7 @@ void printbinarytree(BinaryTree &tree) { //Function of printing 4 levels of Bina
 			delete tree.root->left;
 			tree.root->left = nullptr;
 		}
+		delete [] tempnodetracker;
 	} 
 	else {
 		std::cout << "\t\t\t ! Empty Binary Tree ! \t\t\t" << std::endl;
